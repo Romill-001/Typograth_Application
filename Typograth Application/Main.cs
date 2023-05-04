@@ -33,14 +33,7 @@ namespace Typograth_Application
         }
         private string rule_defis(string str)
         {
-            for (int i = 1; i < str.Length; i++)
-            {
-                if (str[i-1] == ' ' && str[i] == '—' && str[i+1] == ' ')
-                {
-                    str = str.Remove(i - 1, 1);
-                    str = str.Remove(i, 1);
-                }
-            }
+            str = str.Replace(" — ", "—");
             return str;
         }
         private string rule_space(string str)
@@ -52,32 +45,13 @@ namespace Typograth_Application
         }
         private string rule_degree(string str)
         {
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (str[i] == '^' && str[i+1] == '2')
-                {
-                    str = str.Remove(i, 1);
-                    str = str.Replace(str[i], '\u00B2');
-                }
-                else if (str[i] == '^' && str[i + 1] == '3')
-                {
-                    str = str.Remove(i, 1);
-                    str = str.Replace(str[i], '\u00B3');
-                }
-            }
+            str = str.Replace("^2", "\u00B2");
+            str = str.Replace("^3", "\u00B3");
             return str;
         }
         private string rule_multdots(string str)
         {
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (str[i] == '.' && str[i + 1] == '.' && str[i + 2] == '.')
-                {
-                    str = str.Remove(i, 1);
-                    str = str.Remove(i, 1);
-                    str = str.Replace(str[i], '\u2026');
-                }
-            }
+            str = str.Replace("...", "\u2026");
             return str;
         }
         private string rule_quots(string str)
@@ -87,25 +61,12 @@ namespace Typograth_Application
         }
         private string rule_arrow(string str)
         {
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (str[i] == '-' && str[i + 1] == '>')
-                {
-                    str = str.Remove(i, 1);
-                    str = str.Replace(str[i], '\u279E');
-                }
-            }
+            str = str.Replace("->", "\u279E");
             return str;
         }
         private string rule_tab(string str)
         {
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (str[i] == '\u0009')
-                {
-                    str = str.Replace(str[i], '\u2022');
-                }
-            }
+            str = str.Replace("\u0009", "\u2022");
             return str;
         }
         private string rule_sigma(string str)
